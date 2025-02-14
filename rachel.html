@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For My Rachel...</title>
+  <!-- Google Fonts for a gothic look -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Nosifer&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+  <style>
+    /* Base styling with a dark, dramatic background */
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #0d0d0d, #330000);
+      color: #f8f8f8;
+      font-family: 'Cinzel', serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+    
+    header {
+      text-align: center;
+      margin: 40px 0;
+    }
+    
+    header h1 {
+      font-family: 'Nosifer', cursive;
+      font-size: 3rem;
+      text-shadow: 2px 2px 5px rgba(255, 0, 0, 0.7);
+      margin: 0;
+    }
+    
+    /* Style for the audio element */
+    audio {
+      margin-bottom: 20px;
+      outline: none;
+    }
+    
+    .container {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 800px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.9);
+      margin-bottom: 20px;
+    }
+    
+    .section {
+      margin-bottom: 30px;
+    }
+    
+    .section h2 {
+      font-family: 'Nosifer', cursive;
+      font-size: 2rem;
+      margin-bottom: 10px;
+      border-bottom: 2px solid #b30000;
+      padding-bottom: 5px;
+    }
+    
+    .message {
+      font-family: 'Creepster', cursive;
+      font-size: 1.2rem;
+      line-height: 1.6;
+      padding: 10px;
+      margin: 10px 0;
+    }
+    
+    /* Flex container for the message and side images */
+    .message-flex {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+    }
+    
+    /* Styling for the side images (lol.png and lol2.png) */
+    .side-img {
+      width: 80px; /* adjust as needed */
+      height: auto;
+    }
+    
+    .image-preview {
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 20px;
+      gap: 15px;
+      justify-content: center;
+    }
+    
+    .image-preview img {
+      max-width: 100%;
+      border: 3px solid #b30000;
+      border-radius: 10px;
+      max-height: 200px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Rachel Rachel Rachel...</h1>
+  </header>
+  
+  <!-- Audio Element -->
+  <audio controls autoplay>
+    <source src="rachel.m4a" type="audio/mp4">
+    Your browser does not support the audio element.
+  </audio>
+  
+  <div class="container">
+    <!-- Message Section with images on either side -->
+    <div class="message-flex">
+      <img src="lol.png" alt="Left Decoration" class="side-img">
+      <div class="section" id="message-section">
+        <h2>Will you be my valentines?</h2>
+        <p class="message">
+          Happy Valentines! Cheers to our future together, Rachel. :D You make me so happy and I'm very grateful to have you in my life. I should've asked you to be my Valentine earlier, but I'm glad I did it now.
+        Whatever you need, whenever, you can count on me to be there for you. I miss you always and I can't wait to see you again. 
+        </p>
+      </div>
+      <img src="lol2.png" alt="Right Decoration" class="side-img">
+    </div>
+    
+    <!-- Static Photo Section -->
+    <div class="section" id="photo-section">
+      <div class="image-preview">
+        <img src="1.png" alt="Memory 1">
+        <img src="2.jpg" alt="Memory 2">
+        <img src="3.png" alt="Memory 3">
+      </div>
+    </div>
+  </div>
+  
+  <!-- Canvas Confetti Library -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  <script>
+    // Confetti animation on page load
+    window.addEventListener('load', () => {
+      // Duration of the animation in milliseconds
+      const duration = 3000;
+      const animationEnd = Date.now() + duration;
+      const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 1000 };
+
+      const interval = setInterval(() => {
+        const timeLeft = animationEnd - Date.now();
+        if (timeLeft <= 0) {
+          clearInterval(interval);
+          return;
+        }
+        const particleCount = 50 * (timeLeft / duration);
+        // Randomize the confetti origin for variation
+        confetti(Object.assign({}, defaults, {
+          particleCount,
+          origin: { x: Math.random(), y: Math.random() - 0.2 }
+        }));
+      }, 250);
+    });
+  </script>
+</body>
+</html>
