@@ -74,11 +74,12 @@
       align-items: center;
       justify-content: center;
       gap: 20px;
+      margin-bottom: 20px;
     }
     
     /* Styling for the side images (lol.png and lol2.png) */
     .side-img {
-      width: 80px; /* adjust as needed */
+      width: 80px;
       height: auto;
     }
     
@@ -95,6 +96,29 @@
       border: 3px solid #b30000;
       border-radius: 10px;
       max-height: 200px;
+    }
+    
+    /* Mobile responsiveness: stack message and images vertically on small screens */
+    @media (max-width: 600px) {
+      .message-flex {
+        flex-direction: column;
+      }
+      
+      .side-img {
+        width: 60px; /* Slightly smaller on mobile */
+      }
+      
+      header h1 {
+        font-size: 2.5rem;
+      }
+      
+      .section h2 {
+        font-size: 1.8rem;
+      }
+      
+      .message {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
@@ -114,10 +138,9 @@
     <div class="message-flex">
       <img src="lol.png" alt="Left Decoration" class="side-img">
       <div class="section" id="message-section">
-        <h2>Will you be my valentines?</h2>
+        <h2>Happy Valentines!!!</h2>
         <p class="message">
-          Happy Valentines! Cheers to our future together, Rachel. :D You make me so happy and I'm very grateful to have you in my life. I should've asked you to be my Valentine earlier, but I'm glad I did it now.
-        Whatever you need, whenever, you can count on me to be there for you. I miss you always and I can't wait to see you again. 
+          Cheers to our future together, Rachel! You make me so happy and I'm very grateful to have you in my life. I should've asked you to be my Valentine earlier, but I'm glad I did it now.
         </p>
       </div>
       <img src="lol2.png" alt="Right Decoration" class="side-img">
@@ -138,8 +161,7 @@
   <script>
     // Confetti animation on page load
     window.addEventListener('load', () => {
-      // Duration of the animation in milliseconds
-      const duration = 3000;
+      const duration = 300000;
       const animationEnd = Date.now() + duration;
       const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 1000 };
 
@@ -150,7 +172,6 @@
           return;
         }
         const particleCount = 50 * (timeLeft / duration);
-        // Randomize the confetti origin for variation
         confetti(Object.assign({}, defaults, {
           particleCount,
           origin: { x: Math.random(), y: Math.random() - 0.2 }
